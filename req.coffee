@@ -19,13 +19,15 @@ getWatchStar = (url, callback) ->
                 env html, (err, window) ->
                     err && console.error err
                     $ = require('jquery')(window)                    
+                    
+                
                     ret ={
-                     'url' : url
-                     'watch':parseInt($(".social-count.js-social-count")[0].text),
-                     #'star':parseInt($(".social-count.js-social-count")[1].text)
+                        'url' : url
+                        'watch':parseInt $(".social-count.js-social-count")[0].childNodes[0].nodeValue.replace(",",""),
+                        #'star':parseInt $(".social-count.js-social-count")[1].childNodes[0].nodeValue.replace(",",""),
                     }
                     callback null , ret
-urllist = [url1, url2]
+urllist = [url1]
 
 
 async.forEach urllist,  (url, callback) ->
