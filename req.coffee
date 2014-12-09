@@ -11,19 +11,18 @@ getWatchStar = (url, callback) ->
         .set('Accept-Encoding','gzip,deflate,sdch')
         .set('User-Agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36')
         .end (err, res) ->
-            if (res?.status ==  404) || err || res.error
-                console.log 'shit',res.status
+            if (res?.status ==  404) || err || res.error                
                 console.error "#{new Date()} [ERROR] #{url} err: " , err  ||  res.error 
                 return callback (err || res.error)
             else
                 html = res.text
                 env html, (err, window) ->
-                    err && console.log err
+                    err && console.error err
                     $ = require('jquery')(window)                    
                     ret ={
                      'url' : url
                      'watch':parseInt($(".social-count.js-social-count")[0].text),
-                     'star':parseInt($(".social-count.js-social-count")[1].text)
+                     #'star':parseInt($(".social-count.js-social-count")[1].text)
                     }
                     callback null , ret
 urllist = [url1, url2]
@@ -31,6 +30,7 @@ urllist = [url1, url2]
 
 async.forEach urllist,  (url, callback) ->
     getWatchStar url, (err, doc)->
+        console.log doc
         callback err, doc
 , (err) ->
     process.exit 0
