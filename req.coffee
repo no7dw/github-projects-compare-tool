@@ -18,15 +18,16 @@ getWatchStar = (url, callback) ->
                 html = res.text
                 env html, (err, window) ->
                     err && console.log err
-                    $ = require('jquery')(window)
-                    
-                    a = $('.social-count js-social-count')
-                    console.log 'watch value:' ,a
-                    callback null , a
+                    $ = require('jquery')(window)                    
+                    ret ={
+                     'watch':parseInt($(".social-count.js-social-count")[0].text),
+                     'star':parseInt($(".social-count.js-social-count")[1].text)
+                    }
+                    callback null , ret
 
 getWatchStar url1, (err, doc)->
     if not err
-        console.log 'success'
+        console.log 'success', doc
     process.exit 0
 
                     
