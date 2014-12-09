@@ -1,0 +1,14 @@
+{
+  "name": "github-projects-compare-tool",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "0.10.23"
+  },
+  "dependencies": {
+    "request": "2.14.0",
+    "jsdom": "~0.10.1",
+    "superagent": "0.13.0",
+    "jquery": "~2.1.0"
+  }
+}
