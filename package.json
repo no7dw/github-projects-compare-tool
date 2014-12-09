@@ -6,6 +6,7 @@
     "node": "0.10.23"
   },
   "dependencies": {
+    "async": "0.2.6",
     "request": "2.14.0",
     "jsdom": "~0.10.1",
     "superagent": "0.13.0",

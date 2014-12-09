@@ -1,7 +1,8 @@
 request = require 'superagent'
-#request = require 'request'
+async = require 'async'#request = require 'request'
 env = require('jsdom').env
 url1="https://github.com/balderdashy/sails/"
+url2="https://github.com/strongloop/loopback"
 
 getWatchStar = (url, callback) ->
 
@@ -20,14 +21,19 @@ getWatchStar = (url, callback) ->
                     err && console.log err
                     $ = require('jquery')(window)                    
                     ret ={
+                     'url' : url
                      'watch':parseInt($(".social-count.js-social-count")[0].text),
                      'star':parseInt($(".social-count.js-social-count")[1].text)
                     }
                     callback null , ret
+urllist = [url1, url2]
 
-getWatchStar url1, (err, doc)->
-    if not err
-        console.log 'success', doc
+
+async.forEach urllist,  (url, callback) ->
+    getWatchStar url, (err, doc)->
+        callback err, doc
+, (err) ->
     process.exit 0
+
 
                     
