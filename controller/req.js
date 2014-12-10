@@ -18,9 +18,12 @@ getWatchStar = function(url, callback) {
         var $, ret;
         err && console.error(err);
         $ = require('jquery')(window);
+        
+        
         ret = {
           'url': url,
-          'watch': parseInt($(".social-count.js-social-count")[0].childNodes[0].nodeValue.replace(",", ""))
+          'Star': parseInt($(".social-count").first().text().replace(",", "")),
+          'Fork': parseInt($(".social-count").last().text().replace(",", ""))
         };
         return callback(null, ret);
       });
