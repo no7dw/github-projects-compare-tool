@@ -3,8 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  input.span2(type='text', name='as_q1')
+  input#url1.span2(type='text',value="https://github.com/strongloop/loopback")
   label vs
-  input.span2(type='text', name='as_q2')
+  input#url2.span2(type='text',value="https://github.com/balderdashy/sails/")
   button#submit.btn.btn-large.btn-primary(type='submit') Compare
   #result
