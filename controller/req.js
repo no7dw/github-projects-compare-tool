@@ -32,11 +32,13 @@ getWatchStar = function(url, callback) {
 };
 
 compare = function(urllist , cb ) {
-  var result_array = [];
+  var result_array = {url:[], Star:[],Fork:[]};
   async.forEach(urllist, function(url, callback) {
     return getWatchStar(url, function(err, doc) {
       console.log(doc);
-      result_array.push(doc);
+      result_array.url.push(doc.url);
+      result_array.Star.push(doc.Star);
+      result_array.Fork.push(doc.Fork);
       return callback(err, doc);
     });
   }, function(err) {
