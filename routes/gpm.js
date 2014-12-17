@@ -13,8 +13,14 @@ router.get('/', function(req, res) {
   url1=req.query.url1;
   url2=req.query.url2;
   urllist = [url1,url2];
-  // var data = [{"url":"https://github.com/strongloop/loopback","Star":2710,"Fork":237},{"url":"https://github.com/balderdashy/sails/","Star":8604,"Fork":951}];  
-  // return res.json(data);
+  //,{"url":,"Star":8604,"Fork":951
+  var data = 
+  {
+    "url":["https://github.com/strongloop/loopback","https://github.com/balderdashy/sails/"],
+    "Star":[2710,8604],
+    "Fork":[237,951]
+  };  
+  return res.json(data);
   gpm(urllist, function(err, result) {
   	res.json(result);
   });  

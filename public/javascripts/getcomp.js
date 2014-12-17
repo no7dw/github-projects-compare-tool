@@ -9,10 +9,9 @@ $(function(){
                 console.log('data',data);
                 $('#result').empty();   
                 var html = '<table class="table table-bordered table-hover" data-toggle="table" data-cache="true" data-height="299"><tbody><tr><th></th><th>loopback</th><th>sailsjs</th></tr>' ;
-                $.each(data, function(index, eachdata){                            
-                                           
+                $.each(data, function(index, eachdata){                                                                    
                     console.log(index, eachdata);                               
-                    html += "<tr><td></td><td>"+ data[index].Star +"</td><td>"+data[index].Fork+"</td></tr>"
+                    html += "<tr><td>" + index +  "</td> <td>"+ eachdata[0] + "</td><td>" + eachdata[1] + "</td></tr>"
                     
                 
                 });
